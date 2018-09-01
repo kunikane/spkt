@@ -1,0 +1,21 @@
+CREATE TABLE IF NOT EXISTS user (
+  id BIGINT(10) PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  password VARCHAR(8) NOT NULL,
+  insert_datetime DATETIME NOT NULL,
+  update_datetime DATETIME NOT NULL,
+  delete_flag TINYINT(1) NOT NULL
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS todo (
+  id BIGINT(10) PRIMARY KEY AUTO_INCREMENT,
+  user_id BIGINT(10) NOT NULL,
+  text VARCHAR(255) NOT NULL,
+  complete_flag TINYINT(1) NOT NULL,
+  complete_datetime DATETIME,
+  insert_datetime DATETIME NOT NULL,
+  update_datetime DATETIME NOT NULL,
+  delete_flag TINYINT(1) NOT NULL,
+  INDEX user_id(user_id)
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4;
