@@ -27,6 +27,7 @@ class ToDoController @Autowired constructor(private val todoFacade: ToDoFacade) 
 
     @GetMapping
     fun getToDoList(@ModelAttribute requestFormat: GetToDoRequestFormat): ToDoResponseFormat {
+
         return todoFacade.getToDo(requestFormat.userId)
     }
 
