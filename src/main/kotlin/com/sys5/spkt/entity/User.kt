@@ -34,6 +34,6 @@ import javax.persistence.Table
     var updateDatetime: Timestamp = Timestamp(0),
 
     @JsonIgnore
-    @Column(name = "delete_flag", nullable = false)
-    var deleteFlag: Boolean = false
+    @Column(name = "delete_datetime", nullable = false)
+    var deleteDatetime: Timestamp = Timestamp(0)
 )

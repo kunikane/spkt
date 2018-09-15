@@ -22,9 +22,6 @@ import javax.persistence.Table
     @Column(nullable = false)
     var text: String = "",
 
-    @Column(name = "complete_flag", nullable = false)
-    var completeFlag: Boolean = false,
-
     @Column(name = "complete_datetime", nullable = true)
     var completeDatetime: Timestamp? = null,
 
@@ -37,6 +34,6 @@ import javax.persistence.Table
     var updateDatetime: Timestamp = Timestamp(0),
 
     @JsonIgnore
-    @Column(name = "delete_flag", nullable = false)
-    var deleteFlag: Boolean = false
+    @Column(name = "delete_datetime", nullable = false)
+    var deleteDatetime: Timestamp = Timestamp(0)
 )
