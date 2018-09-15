@@ -22,6 +22,6 @@ interface ToDoRepository : JpaRepository<ToDo, Long> {
 
     @Transactional
     @Modifying
-    @Query("UPDATE ToDo AS t SET t.completeFlag = true, completeDatetime = NOW() WHERE t.id = :id")
+    @Query("UPDATE ToDo AS t SET completeDatetime = NOW() WHERE t.id = :id")
     fun updateCompleteFlagById(@Param("id") id: Int) : Int
 }
