@@ -23,29 +23,29 @@ import org.springframework.web.bind.annotation.RestController
 class UserController @Autowired constructor(private val userFacade: UserFacade) {
 
     @GetMapping
-    fun getAllUsers(@ModelAttribute requestFormat: GetAllUsersRequestFormat): UsersResponseFormat {
+    fun get(@ModelAttribute requestFormat: GetAllUsersRequestFormat): UsersResponseFormat {
 
-        return userFacade.getAllUsers()
+        return userFacade.getAll()
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     fun add(@RequestBody requestFormat: AddUserRequestFormat): AddUserResponseFormat {
-        return userFacade.addUser(requestFormat.id, requestFormat.name, requestFormat.email, requestFormat.password)
+        return userFacade.add(requestFormat.id, requestFormat.name, requestFormat.email, requestFormat.password)
     }
 
     @RequestMapping(value = "{id:^[0-9]+$}", method = arrayOf(RequestMethod.PATCH))
     fun update(@PathVariable id: Int, @RequestBody requestFormat: UpdateUserRequestFormat): UpdateUserResponseFormat {
-        return userFacade.updateUser(id, requestFormat.name, requestFormat.email)
+        return userFacade.update(id, requestFormat.name, requestFormat.email)
     }
 
     @RequestMapping(value = "{id:^[0-9]+$}/password", method = arrayOf(RequestMethod.PATCH))
     fun updatePassword(@PathVariable id: Int, @RequestBody requestFormat: UpdateUserPasswordRequestFormat): UpdateUserPasswordResponseFormat {
-        return userFacade.updateUserPassword(id, requestFormat.password)
+        return userFacade.updatePassword(id, requestFormat.password)
     }
 
     @RequestMapping(value = "{id:^[0-9]+$}", method = arrayOf(RequestMethod.DELETE))
     fun delete(@PathVariable id: Int): DeleteUserResponseFormat {
-        return userFacade.deleteUser(id)
+        return userFacade.delete(id)
     }
 }

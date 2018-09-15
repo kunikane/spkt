@@ -10,17 +10,17 @@ import org.springframework.stereotype.Service
 @Service
 class UserFacade @Autowired constructor(private val userRepository: UserRepository) {
 
-    fun getUser(id: Int): UserResponseFormat {
+    fun getOne(id: Int): UserResponseFormat {
         var user: User = userRepository.findOneById(id)
         return UserResponseFormat(user)
     }
 
-    fun getAllUsers(): UsersResponseFormat {
+    fun getAll(): UsersResponseFormat {
         var users: MutableList<User> = userRepository.findAll()
         return UsersResponseFormat(users)
     }
 
-    fun addUser(id: Int, name: String, email: String, password: String): AddUserResponseFormat {
+    fun add(id: Int, name: String, email: String, password: String): AddUserResponseFormat {
         var t: User = User()
         t.id = id
         t.name = name
@@ -30,7 +30,7 @@ class UserFacade @Autowired constructor(private val userRepository: UserReposito
         return AddUserResponseFormat(created)
     }
 
-    fun updateUser(id: Int, name: String, email: String): UpdateUserResponseFormat {
+    fun update(id: Int, name: String, email: String): UpdateUserResponseFormat {
 
         userRepository.updateById(id, name, email)
 
@@ -39,7 +39,7 @@ class UserFacade @Autowired constructor(private val userRepository: UserReposito
     }
 
 
-    fun updateUserPassword(id: Int, password: String): UpdateUserPasswordResponseFormat {
+    fun updatePassword(id: Int, password: String): UpdateUserPasswordResponseFormat {
 
         userRepository.updatePasswordById(id, password)
 
@@ -47,7 +47,7 @@ class UserFacade @Autowired constructor(private val userRepository: UserReposito
         return UpdateUserPasswordResponseFormat(user)
     }
 
-    fun deleteUser(id: Int): DeleteUserResponseFormat {
+    fun delete(id: Int): DeleteUserResponseFormat {
         var t: User = User()
         t.id = id
         userRepository.delete(t)
