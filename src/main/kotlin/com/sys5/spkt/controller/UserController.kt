@@ -1,10 +1,7 @@
 package com.sys5.spkt.controller
 
 import com.sys5.spkt.facade.UserFacade
-import com.sys5.spkt.requestformat.user.AddUserRequestFormat
-import com.sys5.spkt.requestformat.user.GetAllUsersRequestFormat
-import com.sys5.spkt.requestformat.user.UpdateUserPasswordRequestFormat
-import com.sys5.spkt.requestformat.user.UpdateUserRequestFormat
+import com.sys5.spkt.requestformat.user.*
 import com.sys5.spkt.responseformat.user.*
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
@@ -23,9 +20,8 @@ import org.springframework.web.bind.annotation.RestController
 class UserController @Autowired constructor(private val userFacade: UserFacade) {
 
     @GetMapping
-    fun get(@ModelAttribute requestFormat: GetAllUsersRequestFormat): UsersResponseFormat {
-
-        return userFacade.getAll()
+    fun get(@ModelAttribute requestFormat: GetUserRequestFormat): UserResponseFormat {
+        return userFacade.getOne(requestFormat.id)
     }
 
     @PostMapping
