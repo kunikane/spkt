@@ -24,6 +24,11 @@ class UserController @Autowired constructor(private val userFacade: UserFacade) 
         return userFacade.getOne(requestFormat.id)
     }
 
+    @GetMapping("/all")
+    fun getAll(@ModelAttribute requestFormat: GetAllUsersRequestFormat): UsersResponseFormat {
+        return userFacade.getAll()
+    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     fun add(@RequestBody requestFormat: AddUserRequestFormat): AddUserResponseFormat {
