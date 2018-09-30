@@ -29,13 +29,13 @@ class TestAspect {
         println("afterThrowing !!")
     }
 
-    @Around("execution(public * com.sys5.spkt.controller.*.*(..))")
-    @Throws(Throwable::class)
-    fun around(pjp: ProceedingJoinPoint) {
-        // 引数バインドしないとちゃんと動かない
-        println("around - before !!")
-        pjp.proceed()
-        println("around - after !!")
-    }
+//    @Around("execution(public * com.sys5.spkt.controller.*.*(..))")
+//    @Throws(Throwable::class)
+//    fun around(pjp: ProceedingJoinPoint) {
+//        // 引数バインドしないとちゃんと動かない
+//        println("around - before !!")
+//        pjp.proceed()
+//        println("around - after !!")
+//    }
 
 }
